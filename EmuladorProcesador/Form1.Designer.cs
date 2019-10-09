@@ -31,7 +31,7 @@
             this.comboBoxPrioridad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_IO = new System.Windows.Forms.TextBox();
             this.labelP1 = new System.Windows.Forms.Label();
             this.P1textBox1 = new System.Windows.Forms.TextBox();
             this.P1textBox2 = new System.Windows.Forms.TextBox();
@@ -53,12 +53,20 @@
             this.P4textBox1 = new System.Windows.Forms.TextBox();
             this.labelP4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.P1textBoxInicio = new System.Windows.Forms.TextBox();
+            this.P2textBoxInicio = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.P3textBoxInicio = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.P4textBoxInicio = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBoxPrioridad
             // 
             this.comboBoxPrioridad.FormattingEnabled = true;
-            this.comboBoxPrioridad.Location = new System.Drawing.Point(152, 111);
+            this.comboBoxPrioridad.Location = new System.Drawing.Point(153, 93);
             this.comboBoxPrioridad.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(151, 24);
@@ -67,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(148, 74);
+            this.label1.Location = new System.Drawing.Point(150, 63);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 17);
@@ -77,29 +85,29 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(166, 161);
+            this.label2.Location = new System.Drawing.Point(167, 132);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 17);
             this.label2.TabIndex = 2;
             this.label2.Text = "Tiempo de I/O";
             // 
-            // textBox1
+            // textBox_IO
             // 
-            this.textBox1.Location = new System.Drawing.Point(169, 195);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBox1.Size = new System.Drawing.Size(96, 22);
-            this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "10";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox_IO.Location = new System.Drawing.Point(170, 166);
+            this.textBox_IO.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox_IO.Name = "textBox_IO";
+            this.textBox_IO.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.textBox_IO.Size = new System.Drawing.Size(96, 22);
+            this.textBox_IO.TabIndex = 3;
+            this.textBox_IO.Text = "10";
+            this.textBox_IO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_IO.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // labelP1
             // 
             this.labelP1.AutoSize = true;
-            this.labelP1.Location = new System.Drawing.Point(182, 261);
+            this.labelP1.Location = new System.Drawing.Point(183, 218);
             this.labelP1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP1.Name = "labelP1";
             this.labelP1.Size = new System.Drawing.Size(72, 17);
@@ -108,7 +116,7 @@
             // 
             // P1textBox1
             // 
-            this.P1textBox1.Location = new System.Drawing.Point(52, 292);
+            this.P1textBox1.Location = new System.Drawing.Point(53, 278);
             this.P1textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P1textBox1.Name = "P1textBox1";
             this.P1textBox1.Size = new System.Drawing.Size(75, 22);
@@ -116,7 +124,7 @@
             // 
             // P1textBox2
             // 
-            this.P1textBox2.Location = new System.Drawing.Point(136, 292);
+            this.P1textBox2.Location = new System.Drawing.Point(137, 278);
             this.P1textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P1textBox2.Name = "P1textBox2";
             this.P1textBox2.Size = new System.Drawing.Size(75, 22);
@@ -124,7 +132,7 @@
             // 
             // P1textBox3
             // 
-            this.P1textBox3.Location = new System.Drawing.Point(220, 292);
+            this.P1textBox3.Location = new System.Drawing.Point(221, 278);
             this.P1textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P1textBox3.Name = "P1textBox3";
             this.P1textBox3.Size = new System.Drawing.Size(75, 22);
@@ -132,7 +140,7 @@
             // 
             // P1textBox4
             // 
-            this.P1textBox4.Location = new System.Drawing.Point(304, 292);
+            this.P1textBox4.Location = new System.Drawing.Point(305, 278);
             this.P1textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P1textBox4.Name = "P1textBox4";
             this.P1textBox4.Size = new System.Drawing.Size(75, 22);
@@ -140,7 +148,7 @@
             // 
             // P2textBox4
             // 
-            this.P2textBox4.Location = new System.Drawing.Point(304, 359);
+            this.P2textBox4.Location = new System.Drawing.Point(305, 376);
             this.P2textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P2textBox4.Name = "P2textBox4";
             this.P2textBox4.Size = new System.Drawing.Size(75, 22);
@@ -148,7 +156,7 @@
             // 
             // P2textBox3
             // 
-            this.P2textBox3.Location = new System.Drawing.Point(220, 359);
+            this.P2textBox3.Location = new System.Drawing.Point(221, 376);
             this.P2textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P2textBox3.Name = "P2textBox3";
             this.P2textBox3.Size = new System.Drawing.Size(75, 22);
@@ -156,7 +164,7 @@
             // 
             // P2textBox2
             // 
-            this.P2textBox2.Location = new System.Drawing.Point(136, 359);
+            this.P2textBox2.Location = new System.Drawing.Point(137, 376);
             this.P2textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P2textBox2.Name = "P2textBox2";
             this.P2textBox2.Size = new System.Drawing.Size(75, 22);
@@ -164,7 +172,7 @@
             // 
             // P2textBox1
             // 
-            this.P2textBox1.Location = new System.Drawing.Point(52, 359);
+            this.P2textBox1.Location = new System.Drawing.Point(53, 376);
             this.P2textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P2textBox1.Name = "P2textBox1";
             this.P2textBox1.Size = new System.Drawing.Size(75, 22);
@@ -173,7 +181,7 @@
             // labelP2
             // 
             this.labelP2.AutoSize = true;
-            this.labelP2.Location = new System.Drawing.Point(182, 328);
+            this.labelP2.Location = new System.Drawing.Point(183, 316);
             this.labelP2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP2.Name = "labelP2";
             this.labelP2.Size = new System.Drawing.Size(72, 17);
@@ -182,7 +190,7 @@
             // 
             // P3textBox4
             // 
-            this.P3textBox4.Location = new System.Drawing.Point(304, 426);
+            this.P3textBox4.Location = new System.Drawing.Point(305, 472);
             this.P3textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox4.Name = "P3textBox4";
             this.P3textBox4.Size = new System.Drawing.Size(75, 22);
@@ -190,7 +198,7 @@
             // 
             // P3textBox3
             // 
-            this.P3textBox3.Location = new System.Drawing.Point(220, 426);
+            this.P3textBox3.Location = new System.Drawing.Point(221, 472);
             this.P3textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox3.Name = "P3textBox3";
             this.P3textBox3.Size = new System.Drawing.Size(75, 22);
@@ -198,7 +206,7 @@
             // 
             // P3textBox2
             // 
-            this.P3textBox2.Location = new System.Drawing.Point(136, 426);
+            this.P3textBox2.Location = new System.Drawing.Point(137, 472);
             this.P3textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox2.Name = "P3textBox2";
             this.P3textBox2.Size = new System.Drawing.Size(75, 22);
@@ -206,7 +214,7 @@
             // 
             // P3textBox1
             // 
-            this.P3textBox1.Location = new System.Drawing.Point(52, 426);
+            this.P3textBox1.Location = new System.Drawing.Point(53, 472);
             this.P3textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox1.Name = "P3textBox1";
             this.P3textBox1.Size = new System.Drawing.Size(75, 22);
@@ -215,7 +223,7 @@
             // labelP3
             // 
             this.labelP3.AutoSize = true;
-            this.labelP3.Location = new System.Drawing.Point(182, 395);
+            this.labelP3.Location = new System.Drawing.Point(183, 412);
             this.labelP3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP3.Name = "labelP3";
             this.labelP3.Size = new System.Drawing.Size(72, 17);
@@ -224,7 +232,7 @@
             // 
             // P4textBox4
             // 
-            this.P4textBox4.Location = new System.Drawing.Point(304, 492);
+            this.P4textBox4.Location = new System.Drawing.Point(305, 570);
             this.P4textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox4.Name = "P4textBox4";
             this.P4textBox4.Size = new System.Drawing.Size(75, 22);
@@ -232,7 +240,7 @@
             // 
             // P4textBox3
             // 
-            this.P4textBox3.Location = new System.Drawing.Point(220, 492);
+            this.P4textBox3.Location = new System.Drawing.Point(221, 570);
             this.P4textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox3.Name = "P4textBox3";
             this.P4textBox3.Size = new System.Drawing.Size(75, 22);
@@ -240,7 +248,7 @@
             // 
             // P4textBox2
             // 
-            this.P4textBox2.Location = new System.Drawing.Point(136, 492);
+            this.P4textBox2.Location = new System.Drawing.Point(137, 570);
             this.P4textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox2.Name = "P4textBox2";
             this.P4textBox2.Size = new System.Drawing.Size(75, 22);
@@ -248,7 +256,7 @@
             // 
             // P4textBox1
             // 
-            this.P4textBox1.Location = new System.Drawing.Point(52, 492);
+            this.P4textBox1.Location = new System.Drawing.Point(53, 570);
             this.P4textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox1.Name = "P4textBox1";
             this.P4textBox1.Size = new System.Drawing.Size(75, 22);
@@ -257,7 +265,7 @@
             // labelP4
             // 
             this.labelP4.AutoSize = true;
-            this.labelP4.Location = new System.Drawing.Point(182, 461);
+            this.labelP4.Location = new System.Drawing.Point(183, 507);
             this.labelP4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP4.Name = "labelP4";
             this.labelP4.Size = new System.Drawing.Size(72, 17);
@@ -266,7 +274,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(169, 532);
+            this.button1.Location = new System.Drawing.Point(170, 610);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 47);
             this.button1.TabIndex = 24;
@@ -274,11 +282,91 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(150, 248);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 17);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Inicio";
+            // 
+            // P1textBoxInicio
+            // 
+            this.P1textBoxInicio.Location = new System.Drawing.Point(221, 248);
+            this.P1textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.P1textBoxInicio.Name = "P1textBoxInicio";
+            this.P1textBoxInicio.Size = new System.Drawing.Size(75, 22);
+            this.P1textBoxInicio.TabIndex = 26;
+            // 
+            // P2textBoxInicio
+            // 
+            this.P2textBoxInicio.Location = new System.Drawing.Point(221, 346);
+            this.P2textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBoxInicio.Name = "P2textBoxInicio";
+            this.P2textBoxInicio.Size = new System.Drawing.Size(75, 22);
+            this.P2textBoxInicio.TabIndex = 28;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(150, 346);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Inicio";
+            // 
+            // P3textBoxInicio
+            // 
+            this.P3textBoxInicio.Location = new System.Drawing.Point(221, 442);
+            this.P3textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.P3textBoxInicio.Name = "P3textBoxInicio";
+            this.P3textBoxInicio.Size = new System.Drawing.Size(75, 22);
+            this.P3textBoxInicio.TabIndex = 30;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(150, 442);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 17);
+            this.label5.TabIndex = 29;
+            this.label5.Text = "Inicio";
+            // 
+            // P4textBoxInicio
+            // 
+            this.P4textBoxInicio.Location = new System.Drawing.Point(221, 540);
+            this.P4textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.P4textBoxInicio.Name = "P4textBoxInicio";
+            this.P4textBoxInicio.Size = new System.Drawing.Size(75, 22);
+            this.P4textBoxInicio.TabIndex = 32;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(150, 540);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 17);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Inicio";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 593);
+            this.ClientSize = new System.Drawing.Size(447, 685);
+            this.Controls.Add(this.P4textBoxInicio);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.P3textBoxInicio);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.P2textBoxInicio);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.P1textBoxInicio);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.P4textBox4);
             this.Controls.Add(this.P4textBox3);
@@ -300,7 +388,7 @@
             this.Controls.Add(this.P1textBox2);
             this.Controls.Add(this.P1textBox1);
             this.Controls.Add(this.labelP1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBox_IO);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxPrioridad);
@@ -318,7 +406,7 @@
         private System.Windows.Forms.ComboBox comboBoxPrioridad;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_IO;
         private System.Windows.Forms.Label labelP1;
         private System.Windows.Forms.TextBox P1textBox1;
         private System.Windows.Forms.TextBox P1textBox2;
@@ -340,6 +428,14 @@
         private System.Windows.Forms.TextBox P4textBox1;
         private System.Windows.Forms.Label labelP4;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox P1textBoxInicio;
+        private System.Windows.Forms.TextBox P2textBoxInicio;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox P3textBoxInicio;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox P4textBoxInicio;
+        private System.Windows.Forms.Label label6;
     }
 }
 

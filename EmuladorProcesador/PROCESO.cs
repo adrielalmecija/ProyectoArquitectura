@@ -19,7 +19,11 @@ namespace EmuladorProcesador
 
         public int tomarRafaga()
         {
-            return Convert.ToInt32( array[array.Count - 1 ]);
+            
+            int aux;
+            aux = Convert.ToInt32(array[array.Count - 1]);
+            array.RemoveAt(array.Count - 1);
+            return aux;
         }
 
         public ArrayList Array { get => array; set => array = value; }
