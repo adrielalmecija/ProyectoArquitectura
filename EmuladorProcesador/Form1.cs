@@ -15,6 +15,8 @@ namespace EmuladorProcesador
         public Form1()
         {
             InitializeComponent();
+            
+
         }
         
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -25,6 +27,15 @@ namespace EmuladorProcesador
         private void button1_Click(object sender, EventArgs e)
         {
             //click inicio de la simulacion
+            Program.Mostrar();
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            PROCESO p1 = new PROCESO();
+            
+            
         }
     }
 }
