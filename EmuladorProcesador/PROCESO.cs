@@ -11,19 +11,36 @@ namespace EmuladorProcesador
     {
         private ArrayList array = new ArrayList();
         private Boolean nuevo = false,listo = false, bloqueado = false, ejecutando = false, terminado = false;
-
-        public void agregarRafaga(int rafaga)
+        private int inicio = 0;
+        public void agregarRafaga(string dato)
         {
-            array.Add(rafaga);
+
+            try
+            {
+                array.Add(Convert.ToInt32(dato));
+                
+            }
+            catch (Exception)
+            {               
+            }
         }
 
         public int tomarRafaga()
         {
             
-            int aux;
-            aux = Convert.ToInt32(array[array.Count - 1]);
-            array.RemoveAt(array.Count - 1);
+            int aux;   
+            aux = Convert.ToInt32(array[0]);
+            array.RemoveAt(0);
+            
             return aux;
+        }
+
+        public void MostrarRafagas()
+        {
+            foreach(int i in array)
+            {
+                Console.WriteLine(i);
+            }
         }
 
         public ArrayList Array { get => array; set => array = value; }
@@ -32,7 +49,6 @@ namespace EmuladorProcesador
         public bool Bloqueado { get => bloqueado; set => bloqueado = value; }
         public bool Ejecutando { get => ejecutando; set => ejecutando = value; }
         public bool Terminado { get => terminado; set => terminado = value; }
-
-        
+        public int Inicio { get => inicio; set => inicio = value; }
     }
 }

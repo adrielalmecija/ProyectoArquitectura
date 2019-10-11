@@ -27,14 +27,6 @@ namespace EmuladorProcesador
 
 
         }
-        //static Form1 form;
-        public static void Mostrar()
-        {
-            Console.WriteLine("alg o s");
-        }
-        public static void Emular()
-        {
-            
-        }
+
     }
 }

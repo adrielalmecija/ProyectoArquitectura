@@ -26,19 +26,27 @@ namespace EmuladorProcesador
             
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//click inicio de la simulacion
         {
-            //click inicio de la simulacion
-            Program.Mostrar();
-            p1.agregarRafaga(Convert.ToInt32(P1textBox1.Text));
-            p1.agregarRafaga(Convert.ToInt32(P1textBox2.Text));
-            p1.agregarRafaga(Convert.ToInt32(P1textBox3.Text));
-            p1.agregarRafaga(Convert.ToInt32(P1textBox4.Text));
+            if(P1textBoxInicio.Text != "")
+            {
+                try
+                {        
+                    p1.Inicio = Convert.ToInt32(P1textBoxInicio.Text);
+                    p1.agregarRafaga(P1textBox1.Text);
+                    p1.agregarRafaga(P1textBox2.Text);
+                    p1.agregarRafaga(P1textBox3.Text);
+                    p1.agregarRafaga(P1textBox4.Text);
+                }
+                catch (Exception)
+                {
 
-            Console.WriteLine( p1.tomarRafaga());
-            Console.WriteLine( p1.tomarRafaga());
-            Console.WriteLine( p1.tomarRafaga());
-            Console.WriteLine( p1.tomarRafaga());
+                    MessageBox.Show("El inicio 1 no es valido") ;
+                }
+            }
+
+
+            p1.MostrarRafagas();
 
 
         }
