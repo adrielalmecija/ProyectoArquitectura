@@ -12,13 +12,15 @@ namespace EmuladorProcesador
         private ArrayList array = new ArrayList();
         private Boolean nuevo = false,listo = false, bloqueado = false, ejecutando = false, terminado = false;
         private int inicio = 0;
+        private int contadorRafaga=0;
+        private int contadorBloqueado=0;
         public void agregarRafaga(string dato)
         {
 
             try
             {
                 array.Add(Convert.ToInt32(dato));
-                
+                ContadorRafaga++;
             }
             catch (Exception)
             {               
@@ -31,6 +33,7 @@ namespace EmuladorProcesador
             int aux;   
             aux = Convert.ToInt32(array[0]);
             array.RemoveAt(0);
+            ContadorRafaga--;
             
             return aux;
         }
@@ -50,5 +53,7 @@ namespace EmuladorProcesador
         public bool Ejecutando { get => ejecutando; set => ejecutando = value; }
         public bool Terminado { get => terminado; set => terminado = value; }
         public int Inicio { get => inicio; set => inicio = value; }
+        public int ContadorRafaga { get => contadorRafaga; set => contadorRafaga = value; }
+        public int ContadorBloqueado { get => contadorBloqueado; set => contadorBloqueado = value; }
     }
 }

@@ -13,7 +13,7 @@ namespace EmuladorProcesador
     public partial class Form1 : Form
     {
 
-        PROCESO p1 = new PROCESO();
+ 
         public Form1()
         {
             InitializeComponent();
@@ -28,8 +28,11 @@ namespace EmuladorProcesador
 
         private void button1_Click(object sender, EventArgs e)//click inicio de la simulacion
         {
-            if(P1textBoxInicio.Text != "")
+            SISTEMA sistema = new SISTEMA();
+            sistema.TiempoIO = Convert.ToInt32(textBox_IO.Text);
+            if (P1textBoxInicio.Text != "")
             {
+                PROCESO p1 = new PROCESO();
                 try
                 {        
                     p1.Inicio = Convert.ToInt32(P1textBoxInicio.Text);
@@ -37,16 +40,16 @@ namespace EmuladorProcesador
                     p1.agregarRafaga(P1textBox2.Text);
                     p1.agregarRafaga(P1textBox3.Text);
                     p1.agregarRafaga(P1textBox4.Text);
+                    sistema.AgregarProceso(p1);
                 }
                 catch (Exception)
                 {
-
                     MessageBox.Show("El inicio 1 no es valido") ;
                 }
+                p1.MostrarRafagas();
             }
-
-
-            p1.MostrarRafagas();
+            sistema.Ejecucion();
+            
 
 
         }
