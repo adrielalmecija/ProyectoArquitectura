@@ -14,6 +14,7 @@ namespace EmuladorProcesador
         private int inicio = 0;
         private int contadorRafaga=0;
         private int contadorBloqueado=0;
+        private string nombre= "";
         public void agregarRafaga(string dato)
         {
 
@@ -55,5 +56,6 @@ namespace EmuladorProcesador
         public int Inicio { get => inicio; set => inicio = value; }
         public int ContadorRafaga { get => contadorRafaga; set => contadorRafaga = value; }
         public int ContadorBloqueado { get => contadorBloqueado; set => contadorBloqueado = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
     }
 }

@@ -11,7 +11,7 @@ namespace EmuladorProcesador
     {
         protected PROCESO ejecutando;
         protected PROCESO aux;
-        private int tiempo=0,contadorProcesando=0,tiempoIO = 0,fin=0,terminados=0;
+        private int tiempo = 0, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
         private ArrayList bloqueado = new ArrayList();
@@ -24,11 +24,11 @@ namespace EmuladorProcesador
 
         public void Ejecucion()
         {
-            Console.WriteLine("ejecutando " + procesos.Count);
-            do
+            cantidadProcesos = procesos.Count; //leo la cantidad de procesos agregados para esta ejecucion
+            do //loop de ejecucion de la emulacion
             {
                 Console.WriteLine(Tiempo);
-                Tiempo++;
+                Tiempo++; // contador de unidades de tiempo
                 if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
                     flagBloqueadoSalida = false;
@@ -36,7 +36,7 @@ namespace EmuladorProcesador
                     {
                         if ((p.ContadorBloqueado+TiempoIO) <= tiempo && ejecutando == null)
                         {
-                            Console.WriteLine("De Bloqueado a Listo " + nameof(aux));
+                            Console.WriteLine("De Bloqueado a Listo " + p.Nombre);
                             listo.Add(p);
                             bloqueado.Remove(p);
                             flagBloqueadoSalida = true;
@@ -44,7 +44,7 @@ namespace EmuladorProcesador
                         }
                         else
                         {
-                            Console.WriteLine("Proceso " + nameof(aux) + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
+                            Console.WriteLine("Proceso " + p.Nombre + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
                         }
                     }
                     if(flagBloqueadoSalida)
@@ -65,24 +65,24 @@ namespace EmuladorProcesador
                         ejecutando = (PROCESO)listo[0];
                         listo.RemoveAt(0);
                         fin = ejecutando.tomarRafaga();
-                        Console.WriteLine("De listo a ejecutando");
+                        Console.WriteLine("S.O "+ ejecutando.Nombre + " De listo a ejecutando");
                         continue;
 
                     }
                     if (ContadorProcesando < fin)
                     {
-                        Console.WriteLine("Ejecutando " + nameof(ejecutando) + " " + ContadorProcesando);
+                        Console.WriteLine("Ejecutando " + ejecutando.Nombre + " " + ContadorProcesando);
                         ContadorProcesando++;
                     }
                     else if (ejecutando.ContadorRafaga < 1)
                     {
-                        Console.WriteLine("Proceso " + nameof(ejecutando) + " terminado");
+                        Console.WriteLine("S.O " + ejecutando.Nombre + " terminado");
                         ejecutando = null;
                         terminados++;
                     }
                         else
                         {
-                            Console.WriteLine("De ejecutando a bloqueado");
+                            Console.WriteLine("S.O " + ejecutando.Nombre + " de ejecutando a bloqueado");
                             ejecutando.ContadorBloqueado = tiempo;
                             bloqueado.Add(ejecutando);
                             ejecutando = null;
@@ -93,8 +93,8 @@ namespace EmuladorProcesador
                 {
                     if (nuevo.Count > 0) //comprueba si hay procesos nuevos para entrar a listo
                     {
-                        
-                        Console.WriteLine("S.O. <nombre proceso>"  + " de Nuevo a Listo ");
+                        aux = (PROCESO)nuevo[0];
+                        Console.WriteLine("S.O. " + aux.Nombre + " de Nuevo a Listo ");
                         listo.Add(nuevo[0]);
                         nuevo.RemoveAt(0);
                     }
@@ -106,7 +106,7 @@ namespace EmuladorProcesador
                             {
                                 nuevo.Add(p);
                                 procesos.Remove(p);
-                                Console.WriteLine("S.O " + nameof(p) + " ingresa a Nuevo");
+                                Console.WriteLine("S.O " + p.Nombre + " ingresa a Nuevo");
                                 break;
                             }
                         }
@@ -116,7 +116,7 @@ namespace EmuladorProcesador
 
 
 
-            } while (terminados == 0 && tiempo<10000);
+            } while (terminados != cantidadProcesos && tiempo<10000);//(tiempo < a 10mil en caso de falla no quede pegado)
 
         }
 
