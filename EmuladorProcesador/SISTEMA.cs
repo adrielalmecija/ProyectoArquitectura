@@ -10,7 +10,7 @@ namespace EmuladorProcesador
     class SISTEMA
     {
         protected PROCESO ejecutando;
-        private int tiempo=0,contadorProcesando=0,tiempoIO = 0,fin=0;
+        private int tiempo=0,contadorProcesando=0,tiempoIO = 0,fin=0,terminados=0;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
         private ArrayList bloqueado = new ArrayList();
@@ -25,19 +25,19 @@ namespace EmuladorProcesador
             Console.WriteLine("ejecutando " + procesos.Count);
             do
             {
-                Console.Write(Tiempo);
+                Console.WriteLine(Tiempo);
                 Tiempo++;
                 if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
                     foreach (PROCESO p in bloqueado)
                     {
                         p.ContadorBloqueado++;
-                        if (p.ContadorBloqueado >= tiempoIO && ejecutando != null)
+                        if (p.ContadorBloqueado >= tiempoIO && ejecutando == null)
                         {
                             Console.WriteLine("De Bloqueado a Listo " + nameof(p));
                             listo.Add(p);
                             bloqueado.Remove(p);                           
-                            continue;
+                            break;
                         }
                         else
                         {
@@ -48,39 +48,41 @@ namespace EmuladorProcesador
 
 
 
-                if (listo.Count > 0) // ejecuta
+                if (listo.Count > 0 || ejecutando!=null) // ejecuta
                 {
                     
                     if (ejecutando == null)
                     {
                         fin = 0;
+                        contadorProcesando = 0;
                         ejecutando = (PROCESO)listo[0];
                         fin = ejecutando.tomarRafaga();                       
                     }
-                    if (ContadorProcesando >= fin)
+                    if (ContadorProcesando < fin)
                     {
-                        Console.Write("Ejecutando " + nameof(ejecutando) + " " + ContadorProcesando);
+                        Console.WriteLine("Ejecutando " + nameof(ejecutando) + " " + ContadorProcesando);
                         ContadorProcesando++;
                     }
                     else if (ejecutando.ContadorRafaga < 1)
                     {
                         Console.WriteLine("Proceso " + nameof(ejecutando) + " terminado");
                         ejecutando = null;
-                        procesos.RemoveAt(0);
+                        terminados++;
                     }
-                    else
-                    {
-                        bloqueado.Add(ejecutando);
-                        ejecutando = null;
-                    }
-                    continue;
+                        else
+                        {
+                            Console.WriteLine("De ejecutando a bloqueado");
+                            bloqueado.Add(ejecutando);
+                            ejecutando = null;
+                        }
+                        continue;
                 }
                 else
                 {
                     if (nuevo.Count > 0) //comprueba si hay procesos nuevos para entrar a listo
                     {
                         
-                        Console.WriteLine("S.O. " + nameof(ejecutando) + " de Nuevo a Listo ");
+                        Console.WriteLine("S.O. <nombre proceso>"  + " de Nuevo a Listo ");
                         listo.Add(nuevo[0]);
                         nuevo.RemoveAt(0);
                     }
@@ -92,6 +94,7 @@ namespace EmuladorProcesador
                             {
                                 nuevo.Add(p);
                                 procesos.Remove(p);
+                                Console.WriteLine("S.O " + nameof(p) + " ingresa a Nuevo");
                                 break;
                             }
                         }
@@ -101,7 +104,7 @@ namespace EmuladorProcesador
 
 
 
-            } while (procesos.Count==0 || tiempo>10000);
+            } while (terminados == 1 || tiempo<10000);
 
         }
 
