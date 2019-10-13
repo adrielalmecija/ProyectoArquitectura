@@ -16,6 +16,7 @@ namespace EmuladorProcesador
         private ArrayList listo = new ArrayList();
         private ArrayList bloqueado = new ArrayList();
         private ArrayList procesos = new ArrayList();
+        private Boolean flagBloqueadoSalida = false;
 
         public int Tiempo { get => tiempo; set => tiempo = value; }
         public int ContadorProcesando { get => contadorProcesando; set => contadorProcesando = value; }
@@ -30,19 +31,25 @@ namespace EmuladorProcesador
                 Tiempo++;
                 if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
+                    flagBloqueadoSalida = false;
                     foreach (PROCESO p in bloqueado)
                     {
                         if ((p.ContadorBloqueado+TiempoIO) <= tiempo && ejecutando == null)
                         {
                             Console.WriteLine("De Bloqueado a Listo " + nameof(aux));
                             listo.Add(p);
-                            bloqueado.Remove(p);                           
-                            continue;
+                            bloqueado.Remove(p);
+                            flagBloqueadoSalida = true;
+                            break;
                         }
                         else
                         {
                             Console.WriteLine("Proceso " + nameof(aux) + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
                         }
+                    }
+                    if(flagBloqueadoSalida)
+                    {
+                        continue;
                     }
                 }
 
