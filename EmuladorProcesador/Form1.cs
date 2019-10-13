@@ -17,7 +17,10 @@ namespace EmuladorProcesador
         public Form1()
         {
             InitializeComponent();
-            
+            P1groupBox.Enabled = false;
+            P2groupBox.Enabled = false;
+            P3groupBox.Enabled = false;
+            P4groupBox.Enabled = false;
 
         }
         
@@ -107,6 +110,52 @@ namespace EmuladorProcesador
             
         }
 
-     
+        private void P1checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if(P1checkBox.Checked == true)
+            {
+                P1groupBox.Enabled = true;
+            }
+            else
+            {
+                P1groupBox.Enabled = false;
+            }
+        }
+
+        private void P2checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (P2checkBox.Checked == true)
+            {
+                P2groupBox.Enabled = true;
+            }
+            else
+            {
+                P2groupBox.Enabled = false;
+            }
+        }
+
+        private void P3checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (P3checkBox.Checked == true)
+            {
+                P3groupBox.Enabled = true;
+            }
+            else
+            {
+                P3groupBox.Enabled = false;
+            }
+        }
+
+        private void P4checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (P4checkBox.Checked == true)
+            {
+                P4groupBox.Enabled = true;
+            }
+            else
+            {
+                P4groupBox.Enabled = false;
+            }
+        }
     }
 }
