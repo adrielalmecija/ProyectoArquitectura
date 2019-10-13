@@ -10,6 +10,7 @@ namespace EmuladorProcesador
     class SISTEMA
     {
         protected PROCESO ejecutando;
+        protected PROCESO aux;
         private int tiempo=0,contadorProcesando=0,tiempoIO = 0,fin=0,terminados=0;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
@@ -31,17 +32,16 @@ namespace EmuladorProcesador
                 {
                     foreach (PROCESO p in bloqueado)
                     {
-                        p.ContadorBloqueado++;
-                        if (p.ContadorBloqueado >= tiempoIO && ejecutando == null)
+                        if ((p.ContadorBloqueado+TiempoIO) <= tiempo && ejecutando == null)
                         {
-                            Console.WriteLine("De Bloqueado a Listo " + nameof(p));
+                            Console.WriteLine("De Bloqueado a Listo " + nameof(aux));
                             listo.Add(p);
                             bloqueado.Remove(p);                           
-                            break;
+                            continue;
                         }
                         else
                         {
-                            Console.WriteLine("Proceso " + nameof(p) + " bloqueado, tiempo " + p.ContadorBloqueado);
+                            Console.WriteLine("Proceso " + nameof(aux) + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
                         }
                     }
                 }
@@ -56,7 +56,11 @@ namespace EmuladorProcesador
                         fin = 0;
                         contadorProcesando = 0;
                         ejecutando = (PROCESO)listo[0];
-                        fin = ejecutando.tomarRafaga();                       
+                        listo.RemoveAt(0);
+                        fin = ejecutando.tomarRafaga();
+                        Console.WriteLine("De listo a ejecutando");
+                        continue;
+
                     }
                     if (ContadorProcesando < fin)
                     {
@@ -72,6 +76,7 @@ namespace EmuladorProcesador
                         else
                         {
                             Console.WriteLine("De ejecutando a bloqueado");
+                            ejecutando.ContadorBloqueado = tiempo;
                             bloqueado.Add(ejecutando);
                             ejecutando = null;
                         }
@@ -90,7 +95,7 @@ namespace EmuladorProcesador
                     {
                         foreach (PROCESO p in procesos)
                         {
-                            if (p.Inicio >= tiempo)
+                            if (p.Inicio <= tiempo)
                             {
                                 nuevo.Add(p);
                                 procesos.Remove(p);
@@ -104,7 +109,7 @@ namespace EmuladorProcesador
 
 
 
-            } while (terminados == 1 || tiempo<10000);
+            } while (terminados == 0 && tiempo<10000);
 
         }
 
