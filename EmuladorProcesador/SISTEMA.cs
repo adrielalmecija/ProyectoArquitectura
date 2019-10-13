@@ -10,7 +10,7 @@ namespace EmuladorProcesador
     class SISTEMA
     {
         protected PROCESO ejecutando;
-        private int tiempo=0,contadorProcesando=0,tiempoIO = 0;
+        private int tiempo=0,contadorProcesando=0,tiempoIO = 0,fin=0;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
         private ArrayList bloqueado = new ArrayList();
@@ -22,20 +22,22 @@ namespace EmuladorProcesador
 
         public void Ejecucion()
         {
-
+            Console.WriteLine("ejecutando " + procesos.Count);
             do
             {
                 Console.Write(Tiempo);
                 Tiempo++;
-                if (bloqueado[0] != null) //comprobacion de procesos bloqueados
+                if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
                     foreach (PROCESO p in bloqueado)
                     {
                         p.ContadorBloqueado++;
-                        if (p.ContadorBloqueado >= tiempoIO)
+                        if (p.ContadorBloqueado >= tiempoIO && ejecutando != null)
                         {
+                            Console.WriteLine("De Bloqueado a Listo " + nameof(p));
                             listo.Add(p);
-                            bloqueado.Remove(p);
+                            bloqueado.Remove(p);                           
+                            continue;
                         }
                         else
                         {
@@ -46,51 +48,60 @@ namespace EmuladorProcesador
 
 
 
-                if(ejecutando == null && listo[0] != null) // ejecuta
+                if (listo.Count > 0) // ejecuta
                 {
-                    ejecutando = (PROCESO)listo[0];
-                    int fin = ejecutando.tomarRafaga();                    
-                    if(ContadorProcesando <= fin)
+                    
+                    if (ejecutando == null)
+                    {
+                        fin = 0;
+                        ejecutando = (PROCESO)listo[0];
+                        fin = ejecutando.tomarRafaga();                       
+                    }
+                    if (ContadorProcesando >= fin)
                     {
                         Console.Write("Ejecutando " + nameof(ejecutando) + " " + ContadorProcesando);
-                        ContadorProcesando++; 
+                        ContadorProcesando++;
                     }
-                    if(ejecutando.ContadorRafaga < 1 )
+                    else if (ejecutando.ContadorRafaga < 1)
                     {
                         Console.WriteLine("Proceso " + nameof(ejecutando) + " terminado");
                         ejecutando = null;
+                        procesos.RemoveAt(0);
                     }
                     else
                     {
                         bloqueado.Add(ejecutando);
+                        ejecutando = null;
                     }
-                    
+                    continue;
                 }
                 else
                 {
-                    if (nuevo[0] != null) //comprueba si hay procesos nuevos para entrar a listo
+                    if (nuevo.Count > 0) //comprueba si hay procesos nuevos para entrar a listo
                     {
-                        ejecutando = (PROCESO)nuevo[0];
+                        
                         Console.WriteLine("S.O. " + nameof(ejecutando) + " de Nuevo a Listo ");
+                        listo.Add(nuevo[0]);
+                        nuevo.RemoveAt(0);
                     }
                     else //comprueba si hay proceso para entrar a nuevo
                     {
-                            foreach (PROCESO p in procesos)
+                        foreach (PROCESO p in procesos)
+                        {
+                            if (p.Inicio >= tiempo)
                             {
-                                if (p.Inicio >= tiempo)
-                                {
-                                    nuevo.Add(p);
-                                    procesos.Remove(p);
-                                    break;
-                                }
+                                nuevo.Add(p);
+                                procesos.Remove(p);
+                                break;
                             }
+                        }
                     }
 
                 }
 
-                
 
-            } while (false);
+
+            } while (procesos.Count==0 || tiempo>10000);
 
         }
 
