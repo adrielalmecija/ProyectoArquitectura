@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.comboBoxPrioridad = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,10 +38,6 @@
             this.P1textBox2 = new System.Windows.Forms.TextBox();
             this.P1textBox3 = new System.Windows.Forms.TextBox();
             this.P1textBox4 = new System.Windows.Forms.TextBox();
-            this.P2textBox4 = new System.Windows.Forms.TextBox();
-            this.P2textBox3 = new System.Windows.Forms.TextBox();
-            this.P2textBox2 = new System.Windows.Forms.TextBox();
-            this.P2textBox1 = new System.Windows.Forms.TextBox();
             this.labelP2 = new System.Windows.Forms.Label();
             this.P3textBox4 = new System.Windows.Forms.TextBox();
             this.P3textBox3 = new System.Windows.Forms.TextBox();
@@ -55,8 +52,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.P1textBoxInicio = new System.Windows.Forms.TextBox();
-            this.P2textBoxInicio = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.P3textBoxInicio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.P4textBoxInicio = new System.Windows.Forms.TextBox();
@@ -66,19 +61,27 @@
             this.P3checkBox = new System.Windows.Forms.CheckBox();
             this.P4checkBox = new System.Windows.Forms.CheckBox();
             this.P1groupBox = new System.Windows.Forms.GroupBox();
-            this.P2groupBox = new System.Windows.Forms.GroupBox();
             this.P3groupBox = new System.Windows.Forms.GroupBox();
             this.P4groupBox = new System.Windows.Forms.GroupBox();
+            this.P2textBox1 = new System.Windows.Forms.TextBox();
+            this.P2textBox2 = new System.Windows.Forms.TextBox();
+            this.P2textBox3 = new System.Windows.Forms.TextBox();
+            this.P2textBox4 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.P2textBoxInicio = new System.Windows.Forms.TextBox();
+            this.P2groupBox = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.P1groupBox.SuspendLayout();
-            this.P2groupBox.SuspendLayout();
             this.P3groupBox.SuspendLayout();
             this.P4groupBox.SuspendLayout();
+            this.P2groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxPrioridad
             // 
             this.comboBoxPrioridad.FormattingEnabled = true;
-            this.comboBoxPrioridad.Location = new System.Drawing.Point(153, 93);
+            this.comboBoxPrioridad.Location = new System.Drawing.Point(146, 212);
             this.comboBoxPrioridad.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(151, 24);
@@ -87,7 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 63);
+            this.label1.Location = new System.Drawing.Point(143, 185);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(156, 17);
@@ -97,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(167, 132);
+            this.label2.Location = new System.Drawing.Point(173, 251);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 17);
@@ -106,7 +109,7 @@
             // 
             // textBox_IO
             // 
-            this.textBox_IO.Location = new System.Drawing.Point(170, 166);
+            this.textBox_IO.Location = new System.Drawing.Point(173, 278);
             this.textBox_IO.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_IO.Name = "textBox_IO";
             this.textBox_IO.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -119,7 +122,7 @@
             // labelP1
             // 
             this.labelP1.AutoSize = true;
-            this.labelP1.Location = new System.Drawing.Point(183, 218);
+            this.labelP1.Location = new System.Drawing.Point(176, 319);
             this.labelP1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP1.Name = "labelP1";
             this.labelP1.Size = new System.Drawing.Size(72, 17);
@@ -158,42 +161,10 @@
             this.P1textBox4.Size = new System.Drawing.Size(75, 22);
             this.P1textBox4.TabIndex = 8;
             // 
-            // P2textBox4
-            // 
-            this.P2textBox4.Location = new System.Drawing.Point(263, 39);
-            this.P2textBox4.Margin = new System.Windows.Forms.Padding(4);
-            this.P2textBox4.Name = "P2textBox4";
-            this.P2textBox4.Size = new System.Drawing.Size(75, 22);
-            this.P2textBox4.TabIndex = 13;
-            // 
-            // P2textBox3
-            // 
-            this.P2textBox3.Location = new System.Drawing.Point(179, 39);
-            this.P2textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.P2textBox3.Name = "P2textBox3";
-            this.P2textBox3.Size = new System.Drawing.Size(75, 22);
-            this.P2textBox3.TabIndex = 12;
-            // 
-            // P2textBox2
-            // 
-            this.P2textBox2.Location = new System.Drawing.Point(95, 39);
-            this.P2textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.P2textBox2.Name = "P2textBox2";
-            this.P2textBox2.Size = new System.Drawing.Size(75, 22);
-            this.P2textBox2.TabIndex = 11;
-            // 
-            // P2textBox1
-            // 
-            this.P2textBox1.Location = new System.Drawing.Point(11, 39);
-            this.P2textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.P2textBox1.Name = "P2textBox1";
-            this.P2textBox1.Size = new System.Drawing.Size(75, 22);
-            this.P2textBox1.TabIndex = 10;
-            // 
             // labelP2
             // 
             this.labelP2.AutoSize = true;
-            this.labelP2.Location = new System.Drawing.Point(183, 316);
+            this.labelP2.Location = new System.Drawing.Point(176, 433);
             this.labelP2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP2.Name = "labelP2";
             this.labelP2.Size = new System.Drawing.Size(72, 17);
@@ -202,7 +173,7 @@
             // 
             // P3textBox4
             // 
-            this.P3textBox4.Location = new System.Drawing.Point(258, 33);
+            this.P3textBox4.Location = new System.Drawing.Point(258, 43);
             this.P3textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox4.Name = "P3textBox4";
             this.P3textBox4.Size = new System.Drawing.Size(75, 22);
@@ -210,7 +181,7 @@
             // 
             // P3textBox3
             // 
-            this.P3textBox3.Location = new System.Drawing.Point(174, 33);
+            this.P3textBox3.Location = new System.Drawing.Point(174, 43);
             this.P3textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox3.Name = "P3textBox3";
             this.P3textBox3.Size = new System.Drawing.Size(75, 22);
@@ -218,7 +189,7 @@
             // 
             // P3textBox2
             // 
-            this.P3textBox2.Location = new System.Drawing.Point(90, 33);
+            this.P3textBox2.Location = new System.Drawing.Point(90, 43);
             this.P3textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox2.Name = "P3textBox2";
             this.P3textBox2.Size = new System.Drawing.Size(75, 22);
@@ -226,7 +197,7 @@
             // 
             // P3textBox1
             // 
-            this.P3textBox1.Location = new System.Drawing.Point(6, 33);
+            this.P3textBox1.Location = new System.Drawing.Point(6, 43);
             this.P3textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBox1.Name = "P3textBox1";
             this.P3textBox1.Size = new System.Drawing.Size(75, 22);
@@ -235,7 +206,7 @@
             // labelP3
             // 
             this.labelP3.AutoSize = true;
-            this.labelP3.Location = new System.Drawing.Point(183, 412);
+            this.labelP3.Location = new System.Drawing.Point(176, 547);
             this.labelP3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP3.Name = "labelP3";
             this.labelP3.Size = new System.Drawing.Size(72, 17);
@@ -244,7 +215,7 @@
             // 
             // P4textBox4
             // 
-            this.P4textBox4.Location = new System.Drawing.Point(258, 30);
+            this.P4textBox4.Location = new System.Drawing.Point(258, 41);
             this.P4textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox4.Name = "P4textBox4";
             this.P4textBox4.Size = new System.Drawing.Size(75, 22);
@@ -252,7 +223,7 @@
             // 
             // P4textBox3
             // 
-            this.P4textBox3.Location = new System.Drawing.Point(174, 30);
+            this.P4textBox3.Location = new System.Drawing.Point(174, 41);
             this.P4textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox3.Name = "P4textBox3";
             this.P4textBox3.Size = new System.Drawing.Size(75, 22);
@@ -260,7 +231,7 @@
             // 
             // P4textBox2
             // 
-            this.P4textBox2.Location = new System.Drawing.Point(90, 30);
+            this.P4textBox2.Location = new System.Drawing.Point(90, 41);
             this.P4textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox2.Name = "P4textBox2";
             this.P4textBox2.Size = new System.Drawing.Size(75, 22);
@@ -268,7 +239,7 @@
             // 
             // P4textBox1
             // 
-            this.P4textBox1.Location = new System.Drawing.Point(6, 30);
+            this.P4textBox1.Location = new System.Drawing.Point(6, 41);
             this.P4textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBox1.Name = "P4textBox1";
             this.P4textBox1.Size = new System.Drawing.Size(75, 22);
@@ -277,7 +248,7 @@
             // labelP4
             // 
             this.labelP4.AutoSize = true;
-            this.labelP4.Location = new System.Drawing.Point(183, 507);
+            this.labelP4.Location = new System.Drawing.Point(176, 661);
             this.labelP4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelP4.Name = "labelP4";
             this.labelP4.Size = new System.Drawing.Size(72, 17);
@@ -286,7 +257,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(170, 610);
+            this.button1.Location = new System.Drawing.Point(163, 771);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(110, 47);
             this.button1.TabIndex = 24;
@@ -312,27 +283,9 @@
             this.P1textBoxInicio.Size = new System.Drawing.Size(75, 22);
             this.P1textBoxInicio.TabIndex = 26;
             // 
-            // P2textBoxInicio
-            // 
-            this.P2textBoxInicio.Location = new System.Drawing.Point(179, 9);
-            this.P2textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
-            this.P2textBoxInicio.Name = "P2textBoxInicio";
-            this.P2textBoxInicio.Size = new System.Drawing.Size(75, 22);
-            this.P2textBoxInicio.TabIndex = 28;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(108, 9);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "Inicio";
-            // 
             // P3textBoxInicio
             // 
-            this.P3textBoxInicio.Location = new System.Drawing.Point(174, 3);
+            this.P3textBoxInicio.Location = new System.Drawing.Point(174, 13);
             this.P3textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
             this.P3textBoxInicio.Name = "P3textBoxInicio";
             this.P3textBoxInicio.Size = new System.Drawing.Size(75, 22);
@@ -341,7 +294,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(103, 3);
+            this.label5.Location = new System.Drawing.Point(103, 13);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 17);
@@ -350,7 +303,7 @@
             // 
             // P4textBoxInicio
             // 
-            this.P4textBoxInicio.Location = new System.Drawing.Point(174, 0);
+            this.P4textBoxInicio.Location = new System.Drawing.Point(174, 11);
             this.P4textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
             this.P4textBoxInicio.Name = "P4textBoxInicio";
             this.P4textBoxInicio.Size = new System.Drawing.Size(75, 22);
@@ -359,7 +312,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(103, 0);
+            this.label6.Location = new System.Drawing.Point(103, 11);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(40, 17);
@@ -369,7 +322,7 @@
             // P2checkBox
             // 
             this.P2checkBox.AutoSize = true;
-            this.P2checkBox.Location = new System.Drawing.Point(262, 317);
+            this.P2checkBox.Location = new System.Drawing.Point(255, 434);
             this.P2checkBox.Name = "P2checkBox";
             this.P2checkBox.Size = new System.Drawing.Size(18, 17);
             this.P2checkBox.TabIndex = 33;
@@ -379,7 +332,7 @@
             // P1checkBox
             // 
             this.P1checkBox.AutoSize = true;
-            this.P1checkBox.Location = new System.Drawing.Point(262, 219);
+            this.P1checkBox.Location = new System.Drawing.Point(255, 320);
             this.P1checkBox.Name = "P1checkBox";
             this.P1checkBox.Size = new System.Drawing.Size(18, 17);
             this.P1checkBox.TabIndex = 34;
@@ -389,7 +342,7 @@
             // P3checkBox
             // 
             this.P3checkBox.AutoSize = true;
-            this.P3checkBox.Location = new System.Drawing.Point(262, 413);
+            this.P3checkBox.Location = new System.Drawing.Point(255, 548);
             this.P3checkBox.Name = "P3checkBox";
             this.P3checkBox.Size = new System.Drawing.Size(18, 17);
             this.P3checkBox.TabIndex = 35;
@@ -399,12 +352,12 @@
             // P4checkBox
             // 
             this.P4checkBox.AutoSize = true;
-            this.P4checkBox.Location = new System.Drawing.Point(262, 508);
+            this.P4checkBox.Location = new System.Drawing.Point(255, 662);
             this.P4checkBox.Name = "P4checkBox";
             this.P4checkBox.Size = new System.Drawing.Size(18, 17);
             this.P4checkBox.TabIndex = 36;
             this.P4checkBox.UseVisualStyleBackColor = true;
-            this.P4checkBox.CheckedChanged += new System.EventHandler(this.P4checkBox_CheckedChanged);
+            this.P4checkBox.CheckedChanged += new System.EventHandler(this.P4checkBox_CheckedChanged_1);
             // 
             // P1groupBox
             // 
@@ -414,25 +367,11 @@
             this.P1groupBox.Controls.Add(this.P1textBox3);
             this.P1groupBox.Controls.Add(this.P1textBox2);
             this.P1groupBox.Controls.Add(this.P1textBox1);
-            this.P1groupBox.Location = new System.Drawing.Point(42, 236);
+            this.P1groupBox.Location = new System.Drawing.Point(35, 337);
             this.P1groupBox.Name = "P1groupBox";
             this.P1groupBox.Size = new System.Drawing.Size(351, 80);
             this.P1groupBox.TabIndex = 37;
             this.P1groupBox.TabStop = false;
-            // 
-            // P2groupBox
-            // 
-            this.P2groupBox.Controls.Add(this.P2textBoxInicio);
-            this.P2groupBox.Controls.Add(this.label4);
-            this.P2groupBox.Controls.Add(this.P2textBox4);
-            this.P2groupBox.Controls.Add(this.P2textBox3);
-            this.P2groupBox.Controls.Add(this.P2textBox2);
-            this.P2groupBox.Controls.Add(this.P2textBox1);
-            this.P2groupBox.Location = new System.Drawing.Point(42, 337);
-            this.P2groupBox.Name = "P2groupBox";
-            this.P2groupBox.Size = new System.Drawing.Size(350, 75);
-            this.P2groupBox.TabIndex = 38;
-            this.P2groupBox.TabStop = false;
             // 
             // P3groupBox
             // 
@@ -442,9 +381,9 @@
             this.P3groupBox.Controls.Add(this.P3textBox3);
             this.P3groupBox.Controls.Add(this.P3textBox2);
             this.P3groupBox.Controls.Add(this.P3textBox1);
-            this.P3groupBox.Location = new System.Drawing.Point(47, 439);
+            this.P3groupBox.Location = new System.Drawing.Point(40, 565);
             this.P3groupBox.Name = "P3groupBox";
-            this.P3groupBox.Size = new System.Drawing.Size(344, 68);
+            this.P3groupBox.Size = new System.Drawing.Size(351, 80);
             this.P3groupBox.TabIndex = 39;
             this.P3groupBox.TabStop = false;
             // 
@@ -456,17 +395,95 @@
             this.P4groupBox.Controls.Add(this.P4textBox3);
             this.P4groupBox.Controls.Add(this.P4textBox2);
             this.P4groupBox.Controls.Add(this.P4textBox1);
-            this.P4groupBox.Location = new System.Drawing.Point(47, 540);
+            this.P4groupBox.Location = new System.Drawing.Point(40, 679);
             this.P4groupBox.Name = "P4groupBox";
-            this.P4groupBox.Size = new System.Drawing.Size(343, 70);
+            this.P4groupBox.Size = new System.Drawing.Size(351, 80);
             this.P4groupBox.TabIndex = 40;
             this.P4groupBox.TabStop = false;
+            // 
+            // P2textBox1
+            // 
+            this.P2textBox1.Location = new System.Drawing.Point(11, 41);
+            this.P2textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBox1.Name = "P2textBox1";
+            this.P2textBox1.Size = new System.Drawing.Size(75, 22);
+            this.P2textBox1.TabIndex = 10;
+            // 
+            // P2textBox2
+            // 
+            this.P2textBox2.Location = new System.Drawing.Point(95, 41);
+            this.P2textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBox2.Name = "P2textBox2";
+            this.P2textBox2.Size = new System.Drawing.Size(75, 22);
+            this.P2textBox2.TabIndex = 11;
+            // 
+            // P2textBox3
+            // 
+            this.P2textBox3.Location = new System.Drawing.Point(179, 41);
+            this.P2textBox3.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBox3.Name = "P2textBox3";
+            this.P2textBox3.Size = new System.Drawing.Size(75, 22);
+            this.P2textBox3.TabIndex = 12;
+            // 
+            // P2textBox4
+            // 
+            this.P2textBox4.Location = new System.Drawing.Point(263, 41);
+            this.P2textBox4.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBox4.Name = "P2textBox4";
+            this.P2textBox4.Size = new System.Drawing.Size(75, 22);
+            this.P2textBox4.TabIndex = 13;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(108, 11);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "Inicio";
+            // 
+            // P2textBoxInicio
+            // 
+            this.P2textBoxInicio.Location = new System.Drawing.Point(179, 11);
+            this.P2textBoxInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.P2textBoxInicio.Name = "P2textBoxInicio";
+            this.P2textBoxInicio.Size = new System.Drawing.Size(75, 22);
+            this.P2textBoxInicio.TabIndex = 28;
+            // 
+            // P2groupBox
+            // 
+            this.P2groupBox.Controls.Add(this.P2textBoxInicio);
+            this.P2groupBox.Controls.Add(this.label4);
+            this.P2groupBox.Controls.Add(this.P2textBox4);
+            this.P2groupBox.Controls.Add(this.P2textBox3);
+            this.P2groupBox.Controls.Add(this.P2textBox2);
+            this.P2groupBox.Controls.Add(this.P2textBox1);
+            this.P2groupBox.Location = new System.Drawing.Point(35, 451);
+            this.P2groupBox.Name = "P2groupBox";
+            this.P2groupBox.Size = new System.Drawing.Size(351, 80);
+            this.P2groupBox.TabIndex = 38;
+            this.P2groupBox.TabStop = false;
+            this.P2groupBox.UseCompatibleTextRendering = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
+            this.pictureBox1.Location = new System.Drawing.Point(111, 6);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(221, 165);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 41;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 685);
+            this.ClientSize = new System.Drawing.Size(447, 830);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.P4groupBox);
             this.Controls.Add(this.P3groupBox);
             this.Controls.Add(this.P2groupBox);
@@ -490,12 +507,13 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.P1groupBox.ResumeLayout(false);
             this.P1groupBox.PerformLayout();
-            this.P2groupBox.ResumeLayout(false);
-            this.P2groupBox.PerformLayout();
             this.P3groupBox.ResumeLayout(false);
             this.P3groupBox.PerformLayout();
             this.P4groupBox.ResumeLayout(false);
             this.P4groupBox.PerformLayout();
+            this.P2groupBox.ResumeLayout(false);
+            this.P2groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -512,10 +530,6 @@
         private System.Windows.Forms.TextBox P1textBox2;
         private System.Windows.Forms.TextBox P1textBox3;
         private System.Windows.Forms.TextBox P1textBox4;
-        private System.Windows.Forms.TextBox P2textBox4;
-        private System.Windows.Forms.TextBox P2textBox3;
-        private System.Windows.Forms.TextBox P2textBox2;
-        private System.Windows.Forms.TextBox P2textBox1;
         private System.Windows.Forms.Label labelP2;
         private System.Windows.Forms.TextBox P3textBox4;
         private System.Windows.Forms.TextBox P3textBox3;
@@ -530,8 +544,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox P1textBoxInicio;
-        private System.Windows.Forms.TextBox P2textBoxInicio;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox P3textBoxInicio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox P4textBoxInicio;
@@ -541,9 +553,16 @@
         private System.Windows.Forms.CheckBox P3checkBox;
         private System.Windows.Forms.CheckBox P4checkBox;
         private System.Windows.Forms.GroupBox P1groupBox;
-        private System.Windows.Forms.GroupBox P2groupBox;
         private System.Windows.Forms.GroupBox P3groupBox;
         private System.Windows.Forms.GroupBox P4groupBox;
+        private System.Windows.Forms.TextBox P2textBox1;
+        private System.Windows.Forms.TextBox P2textBox2;
+        private System.Windows.Forms.TextBox P2textBox3;
+        private System.Windows.Forms.TextBox P2textBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox P2textBoxInicio;
+        private System.Windows.Forms.GroupBox P2groupBox;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -24,7 +24,8 @@ namespace EmuladorProcesador
                 ContadorRafaga++;
             }
             catch (Exception)
-            {               
+            {
+                
             }
         }
 
