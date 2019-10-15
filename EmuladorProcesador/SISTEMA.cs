@@ -4,6 +4,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace EmuladorProcesador
 {
@@ -12,23 +13,37 @@ namespace EmuladorProcesador
         protected PROCESO ejecutando;
         protected PROCESO aux;
         private int tiempo = 0, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
+        private int politicaDeTrabajo=0;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
         private ArrayList bloqueado = new ArrayList();
         private ArrayList procesos = new ArrayList();
         private Boolean flagBloqueadoSalida = false;
+        private FormGrafica formGrafica;
+
+        public SISTEMA(FormGrafica formGrafica)
+        {
+            this.formGrafica = formGrafica;
+        }
+
+
+        //private DataGridView grafica = new DataGridView();
 
         public int Tiempo { get => tiempo; set => tiempo = value; }
         public int ContadorProcesando { get => contadorProcesando; set => contadorProcesando = value; }
         public int TiempoIO { get => tiempoIO; set => tiempoIO = value; }
-
+        public int PoliticaDeTrabajo { get => politicaDeTrabajo; set => politicaDeTrabajo = value; }
+        
         public void Ejecucion()
         {
+            
             cantidadProcesos = procesos.Count; //leo la cantidad de procesos agregados para esta ejecucion
             do //loop de ejecucion de la emulacion
             {
+
                 Console.WriteLine(Tiempo);
                 Tiempo++; // contador de unidades de tiempo
+                formGrafica.AgregarRow();
                 if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
                     flagBloqueadoSalida = false;
@@ -117,7 +132,8 @@ namespace EmuladorProcesador
 
 
             } while (terminados != cantidadProcesos && tiempo<10000);//(tiempo < a 10mil en caso de falla no quede pegado)
-
+            
+            
         }
 
         public void AgregarProceso(PROCESO p)

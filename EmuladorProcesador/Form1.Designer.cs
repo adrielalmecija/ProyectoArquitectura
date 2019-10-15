@@ -81,10 +81,10 @@
             // comboBoxPrioridad
             // 
             this.comboBoxPrioridad.FormattingEnabled = true;
-            this.comboBoxPrioridad.Location = new System.Drawing.Point(146, 212);
+            this.comboBoxPrioridad.Location = new System.Drawing.Point(128, 212);
             this.comboBoxPrioridad.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
-            this.comboBoxPrioridad.Size = new System.Drawing.Size(151, 24);
+            this.comboBoxPrioridad.Size = new System.Drawing.Size(186, 24);
             this.comboBoxPrioridad.TabIndex = 0;
             // 
             // label1
@@ -502,7 +502,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxPrioridad);
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
             this.Name = "Form1";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Procesador 5 estados";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.P1groupBox.ResumeLayout(false);

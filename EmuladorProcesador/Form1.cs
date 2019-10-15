@@ -21,6 +21,10 @@ namespace EmuladorProcesador
             P2groupBox.Enabled = false;
             P3groupBox.Enabled = false;
             P4groupBox.Enabled = false;
+            comboBoxPrioridad.Items.Add("FIFO");
+            comboBoxPrioridad.Items.Add("Mas corto primero c/desalojo");
+            comboBoxPrioridad.SelectedIndex = 0;
+            comboBoxPrioridad.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
         
@@ -31,8 +35,9 @@ namespace EmuladorProcesador
 
         private void button1_Click(object sender, EventArgs e)//click inicio de la simulacion
         {
+            FormGrafica fGrafica = new FormGrafica();
             Boolean flagFunciona = false;
-            SISTEMA sistema = new SISTEMA();
+            SISTEMA sistema = new SISTEMA(fGrafica);
             try
             {
                 sistema.TiempoIO = Convert.ToInt32(textBox_IO.Text);
@@ -156,9 +161,14 @@ namespace EmuladorProcesador
 
             if (flagFunciona)
             {
+                 
+                    
                 sistema.Ejecucion(); //comienzo de la simulacion
+                fGrafica.ShowDialog();
+
             }
-            
+
+
             
 
 
