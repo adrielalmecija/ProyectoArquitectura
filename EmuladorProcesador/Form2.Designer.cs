@@ -58,7 +58,7 @@
             this.dataGridGrafica.ReadOnly = true;
             this.dataGridGrafica.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridGrafica.RowTemplate.Height = 24;
-            this.dataGridGrafica.Size = new System.Drawing.Size(646, 366);
+            this.dataGridGrafica.Size = new System.Drawing.Size(649, 366);
             this.dataGridGrafica.TabIndex = 0;
             // 
             // ColSO
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 477);
+            this.ClientSize = new System.Drawing.Size(696, 477);
             this.Controls.Add(this.dataGridGrafica);
             this.Name = "FormGrafica";
             this.Text = "Grafica de Procesado";

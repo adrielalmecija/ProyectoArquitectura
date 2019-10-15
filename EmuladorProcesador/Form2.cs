@@ -32,7 +32,7 @@ namespace EmuladorProcesador
                     dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumOrchid;
                     break;
                 case "Proceso 2":
-                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumBlue;
+                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumSeaGreen;
                     break;
                 case "Proceso 3":
                     dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumSpringGreen;
