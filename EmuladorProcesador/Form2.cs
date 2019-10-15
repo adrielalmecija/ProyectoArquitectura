@@ -25,7 +25,15 @@ namespace EmuladorProcesador
 
         public void MarcarCelda(int tiempo,int numCelda,string proceso)
         {
-            dataGridGrafica.Rows[tiempo].Cells[numCelda].Value = proceso;
+            if(dataGridGrafica.Rows[tiempo].Cells[numCelda].Value == null)
+            {
+                dataGridGrafica.Rows[tiempo].Cells[numCelda].Value = proceso;
+            }
+            else
+            {
+                dataGridGrafica.Rows[tiempo].Cells[numCelda].Value += " - " + proceso;
+            }
+            
             switch(proceso)
             {
                 case "Proceso 1":
