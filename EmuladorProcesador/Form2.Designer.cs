@@ -40,6 +40,10 @@
             // 
             // dataGridGrafica
             // 
+            this.dataGridGrafica.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridGrafica.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridGrafica.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridGrafica.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColSO,
@@ -48,47 +52,56 @@
             this.ColBloqueado,
             this.ColEjecutando,
             this.ColTerminado});
-            this.dataGridGrafica.Location = new System.Drawing.Point(33, 70);
+            this.dataGridGrafica.Location = new System.Drawing.Point(22, 70);
+            this.dataGridGrafica.MultiSelect = false;
             this.dataGridGrafica.Name = "dataGridGrafica";
+            this.dataGridGrafica.ReadOnly = true;
+            this.dataGridGrafica.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridGrafica.RowTemplate.Height = 24;
-            this.dataGridGrafica.Size = new System.Drawing.Size(644, 363);
+            this.dataGridGrafica.Size = new System.Drawing.Size(646, 366);
             this.dataGridGrafica.TabIndex = 0;
             // 
             // ColSO
             // 
             this.ColSO.HeaderText = "S.O.";
             this.ColSO.Name = "ColSO";
+            this.ColSO.ReadOnly = true;
             // 
             // ColNuevo
             // 
             this.ColNuevo.HeaderText = "Nuevo";
             this.ColNuevo.Name = "ColNuevo";
+            this.ColNuevo.ReadOnly = true;
             // 
             // ColListo
             // 
             this.ColListo.HeaderText = "Listo";
             this.ColListo.Name = "ColListo";
+            this.ColListo.ReadOnly = true;
             // 
             // ColBloqueado
             // 
             this.ColBloqueado.HeaderText = "Bloqueado";
             this.ColBloqueado.Name = "ColBloqueado";
+            this.ColBloqueado.ReadOnly = true;
             // 
             // ColEjecutando
             // 
             this.ColEjecutando.HeaderText = "Ejecutando";
             this.ColEjecutando.Name = "ColEjecutando";
+            this.ColEjecutando.ReadOnly = true;
             // 
             // ColTerminado
             // 
             this.ColTerminado.HeaderText = "Terminado";
             this.ColTerminado.Name = "ColTerminado";
+            this.ColTerminado.ReadOnly = true;
             // 
             // FormGrafica
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(707, 481);
+            this.ClientSize = new System.Drawing.Size(693, 477);
             this.Controls.Add(this.dataGridGrafica);
             this.Name = "FormGrafica";
             this.Text = "Grafica de Procesado";

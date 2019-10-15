@@ -12,7 +12,7 @@ namespace EmuladorProcesador
     {
         protected PROCESO ejecutando;
         protected PROCESO aux;
-        private int tiempo = 0, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
+        private int tiempo = -1, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
         private int politicaDeTrabajo=0;
         private ArrayList nuevo = new ArrayList();
         private ArrayList listo = new ArrayList();
@@ -20,15 +20,12 @@ namespace EmuladorProcesador
         private ArrayList procesos = new ArrayList();
         private Boolean flagBloqueadoSalida = false;
         private FormGrafica formGrafica;
-
+        private int numSO = 0, numNuevo = 1, numListo = 2, numBloqueado = 3, numEjecutando = 4, numTerminado = 5;
         public SISTEMA(FormGrafica formGrafica)
         {
             this.formGrafica = formGrafica;
         }
-
-
-        //private DataGridView grafica = new DataGridView();
-
+        
         public int Tiempo { get => tiempo; set => tiempo = value; }
         public int ContadorProcesando { get => contadorProcesando; set => contadorProcesando = value; }
         public int TiempoIO { get => tiempoIO; set => tiempoIO = value; }
@@ -40,10 +37,10 @@ namespace EmuladorProcesador
             cantidadProcesos = procesos.Count; //leo la cantidad de procesos agregados para esta ejecucion
             do //loop de ejecucion de la emulacion
             {
-
-                Console.WriteLine(Tiempo);
                 Tiempo++; // contador de unidades de tiempo
-                formGrafica.AgregarRow();
+                Console.WriteLine(Tiempo);
+                
+                formGrafica.AgregarRow(tiempo);
                 if (bloqueado.Count > 0 ) //comprobacion de procesos bloqueados
                 {
                     flagBloqueadoSalida = false;
@@ -51,7 +48,8 @@ namespace EmuladorProcesador
                     {
                         if ((p.ContadorBloqueado+TiempoIO) <= tiempo && ejecutando == null)
                         {
-                            Console.WriteLine("De Bloqueado a Listo " + p.Nombre);
+                            Console.WriteLine("S.O de Bloqueado a Listo " + p.Nombre);
+                            formGrafica.MarcarCelda(Tiempo, numSO, p.Nombre);
                             listo.Add(p);
                             bloqueado.Remove(p);
                             flagBloqueadoSalida = true;
@@ -59,6 +57,7 @@ namespace EmuladorProcesador
                         }
                         else
                         {
+                            formGrafica.MarcarCelda(tiempo, numBloqueado, p.Nombre);
                             Console.WriteLine("Proceso " + p.Nombre + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
                         }
                     }
@@ -80,6 +79,7 @@ namespace EmuladorProcesador
                         ejecutando = (PROCESO)listo[0];
                         listo.RemoveAt(0);
                         fin = ejecutando.tomarRafaga();
+                        formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
                         Console.WriteLine("S.O "+ ejecutando.Nombre + " De listo a ejecutando");
                         continue;
 
@@ -87,17 +87,20 @@ namespace EmuladorProcesador
                     if (ContadorProcesando < fin)
                     {
                         Console.WriteLine("Ejecutando " + ejecutando.Nombre + " " + ContadorProcesando);
+                        formGrafica.MarcarCelda(tiempo, numEjecutando , ejecutando.Nombre);
                         ContadorProcesando++;
                     }
                     else if (ejecutando.ContadorRafaga < 1)
                     {
                         Console.WriteLine("S.O " + ejecutando.Nombre + " terminado");
+                        formGrafica.MarcarCelda(tiempo, numTerminado, ejecutando.Nombre);
                         ejecutando = null;
                         terminados++;
                     }
                         else
                         {
                             Console.WriteLine("S.O " + ejecutando.Nombre + " de ejecutando a bloqueado");
+                            formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
                             ejecutando.ContadorBloqueado = tiempo;
                             bloqueado.Add(ejecutando);
                             ejecutando = null;
@@ -109,6 +112,7 @@ namespace EmuladorProcesador
                     if (nuevo.Count > 0) //comprueba si hay procesos nuevos para entrar a listo
                     {
                         aux = (PROCESO)nuevo[0];
+                        formGrafica.MarcarCelda(tiempo, numSO, aux.Nombre);
                         Console.WriteLine("S.O. " + aux.Nombre + " de Nuevo a Listo ");
                         listo.Add(nuevo[0]);
                         nuevo.RemoveAt(0);
@@ -121,6 +125,7 @@ namespace EmuladorProcesador
                             {
                                 nuevo.Add(p);
                                 procesos.Remove(p);
+                                formGrafica.MarcarCelda(tiempo, numSO, p.Nombre);
                                 Console.WriteLine("S.O " + p.Nombre + " ingresa a Nuevo");
                                 break;
                             }

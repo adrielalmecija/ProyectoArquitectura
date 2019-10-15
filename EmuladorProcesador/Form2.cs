@@ -17,9 +17,31 @@ namespace EmuladorProcesador
         {
             InitializeComponent();
         }
-         public void AgregarRow()
+         public void AgregarRow(int tiempo)
         {
-            this.dataGridGrafica.Rows.Add();
+            dataGridGrafica.Rows.Add();
+            dataGridGrafica.Rows[tiempo].HeaderCell.Value = Convert.ToString(tiempo);
+        }
+
+        public void MarcarCelda(int tiempo,int numCelda,string proceso)
+        {
+            dataGridGrafica.Rows[tiempo].Cells[numCelda].Value = proceso;
+            switch(proceso)
+            {
+                case "Proceso 1":
+                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumOrchid;
+                    break;
+                case "Proceso 2":
+                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumBlue;
+                    break;
+                case "Proceso 3":
+                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumSpringGreen;
+                    break;
+                case "Proceso 4":
+                    dataGridGrafica.Rows[tiempo].Cells[numCelda].Style.BackColor = Color.MediumPurple;
+                    break;
+                
+            }
         }
         
     }
