@@ -40,6 +40,15 @@ namespace EmuladorProcesador
             FormGrafica fGrafica = new FormGrafica();
             Boolean flagFunciona = false;
             SISTEMA sistema = new SISTEMA(fGrafica);
+            switch(comboBoxPrioridad.Text)
+            {
+                case "FIFO":
+                    sistema.PoliticaDeTrabajo = 0;
+                    break;
+                case "Mas corto primero c/desalojo":
+                    sistema.PoliticaDeTrabajo = 1;
+                    break;
+            }
             try
             {
                 sistema.TiempoIO = Convert.ToInt32(textBox_IO.Text);
