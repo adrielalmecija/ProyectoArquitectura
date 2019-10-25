@@ -38,108 +38,30 @@ namespace EmuladorProcesador
             cantidadProcesos = procesos.Count; //leo la cantidad de procesos agregados para esta ejecucion
             do //loop de ejecucion de la emulacion
             {
-                Tiempo++; // contador de unidades de tiempo
-                Console.WriteLine(Tiempo);
-                
+                Tiempo++; //contador de unidades de tiempo
                 formGrafica.AgregarRow(tiempo);
 
-                MostrarProcesos(listo, tiempo, numListo);
-                MostrarProcesos(nuevo, tiempo, numNuevo);
-                MostrarProcesos(bloqueado, tiempo, numBloqueado);
- 
-                foreach (PROCESO p in bloqueado)//comprobacion de procesos bloqueados
-                {
-                    if ((p.ContadorBloqueado+TiempoIO) < tiempo && ejecutando == null)
-                    {
-                        Console.WriteLine("S.O de Bloqueado a Listo " + p.Nombre);
-                        formGrafica.MarcarCelda(Tiempo, numSO, p.Nombre);
-                        listo.Add(p);
-                        bloqueado.Remove(p);
-                        flagBloqueadoSalida = true;
-                        break;
-                    }
-                    else
-                    {                            
-                        Console.WriteLine("Proceso " + p.Nombre + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
-                    }
-                }
-                if(flagBloqueadoSalida)
-                {
-                    flagBloqueadoSalida = false;
-                    continue;//si ejecuto el if continua al proximo tiempo de ejecucion
-                }
+                MostrarProcesos(listo, tiempo, numListo);//marca los procesos en la grafica
+                MostrarProcesos(nuevo, tiempo, numNuevo);//marca los procesos en la grafica
+                MostrarProcesos(bloqueado, tiempo, numBloqueado);//marca los procesos en la grafica
 
-                if(ejecutando == null) //comprueba si hay proceso para entrar a nuevo
+                if(Bloqueados())//Realiza todo lo relacionado a procesos bloqueados
                 {
-                    flagNuevoSalida = false;
-                    foreach (PROCESO p in procesos)
-                    {
-                        if (p.Inicio <= tiempo)
-                        {
-                            nuevo.Add(p);
-                            procesos.Remove(p);
-                            formGrafica.MarcarCelda(tiempo, numSO, p.Nombre);
-                            Console.WriteLine("S.O " + p.Nombre + " ingresa a Nuevo");
-                            flagNuevoSalida = true;
-                            break;
-                        }
-                    }
-                    if(flagNuevoSalida)
-                    {
-                        continue;
-                    }
-                }
-
-                if (nuevo.Count > 0 && ejecutando == null) //comprueba si hay procesos nuevos para entrar a listo
-                {
-                    aux = (PROCESO)nuevo[0];
-                    formGrafica.MarcarCelda(tiempo, numSO, aux.Nombre);
-                    Console.WriteLine("S.O. " + aux.Nombre + " de Nuevo a Listo ");
-                    listo.Add(nuevo[0]);
-                    nuevo.RemoveAt(0);
                     continue;
                 }
-
-
-                if (listo.Count > 0 || ejecutando!=null) // ejecuta
+                if (Nuevos())//Realiza todo lo relacionado a procesos nuevos
                 {
-                    
-                    if (ejecutando == null)
-                    {
-                        fin = 0;
-                        contadorProcesando = 0;
-                        ejecutando = (PROCESO)listo[0];
-                        listo.RemoveAt(0);
-                        fin = ejecutando.tomarRafaga();
-                        formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
-                        Console.WriteLine("S.O "+ ejecutando.Nombre + " De listo a ejecutando");
-                        continue;
-                    }
-                    if (ContadorProcesando < fin)
-                    {
-                        Console.WriteLine("Ejecutando " + ejecutando.Nombre + " " + ContadorProcesando);
-                        formGrafica.MarcarCelda(tiempo, numEjecutando , ejecutando.Nombre);
-                        ContadorProcesando++;
-                    }
-                    else if (ejecutando.ContadorRafaga < 1)
-                    {
-                        Console.WriteLine("S.O " + ejecutando.Nombre + " terminado");
-                        formGrafica.MarcarCelda(tiempo, numTerminado, ejecutando.Nombre);
-                        ejecutando = null;
-                        terminados++;
-                    }
-                        else
-                        {
-                            Console.WriteLine("S.O " + ejecutando.Nombre + " de ejecutando a bloqueado");
-                            formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
-                            ejecutando.ContadorBloqueado = tiempo;
-                            bloqueado.Add(ejecutando);
-                            ejecutando = null;
-                        }
-                        continue;
+                    continue;
                 }
-
-
+                if (Listos())//Realiza todo lo relacionado a procesos listos
+                {
+                    continue;
+                }                
+                if (Ejecutando())//Realiza todo lo relacionado a procesos ejecuando
+                {
+                    continue;
+                }
+                
 
             } while (terminados != cantidadProcesos && tiempo<10000);//(tiempo < a 10mil en caso de falla no quede pegado)
                         
@@ -158,6 +80,113 @@ namespace EmuladorProcesador
             }
         }
         
+        public Boolean Bloqueados()
+        {
+            foreach (PROCESO p in bloqueado)//comprobacion de procesos bloqueados
+            {
+                if ((p.ContadorBloqueado + TiempoIO) < tiempo && ejecutando == null)
+                {
+                    Console.WriteLine("S.O de Bloqueado a Listo " + p.Nombre);
+                    formGrafica.MarcarCelda(Tiempo, numSO, p.Nombre);
+                    listo.Add(p);
+                    bloqueado.Remove(p);
+                    flagBloqueadoSalida = true;//marca la salida para el if
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Proceso " + p.Nombre + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
+                }
+            }
+            if (flagBloqueadoSalida)
+            {
+                flagBloqueadoSalida = false;
+                return true;//si ejecuto el if continua al proximo tiempo de ejecucion
+            }
+            return false;
+        }
 
+        public Boolean Nuevos()
+        {
+            if (ejecutando == null) //comprueba si hay proceso para entrar a nuevo
+            {
+                flagNuevoSalida = false;
+                foreach (PROCESO p in procesos)
+                {
+                    if (p.Inicio <= tiempo)
+                    {
+                        nuevo.Add(p);
+                        procesos.Remove(p);
+                        formGrafica.MarcarCelda(tiempo, numSO, p.Nombre);
+                        Console.WriteLine("S.O " + p.Nombre + " ingresa a Nuevo");
+                        flagNuevoSalida = true;
+                        break;
+                    }
+                }
+                if (flagNuevoSalida)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public Boolean Listos()
+        {
+            if (nuevo.Count > 0 && ejecutando == null) //comprueba si hay procesos nuevos para entrar a listo
+            {
+                aux = (PROCESO)nuevo[0];
+                formGrafica.MarcarCelda(tiempo, numSO, aux.Nombre);
+                Console.WriteLine("S.O. " + aux.Nombre + " de Nuevo a Listo ");
+                listo.Add(nuevo[0]);
+                nuevo.RemoveAt(0);
+                return true;
+            }
+            return false;
+        }
+
+
+        public Boolean Ejecutando()
+        {
+            if (listo.Count > 0 || ejecutando != null) // ejecuta
+            {
+
+                if (ejecutando == null) //si nada se esta ejecuando ya, mete el primer proceso de listo a ejecutando
+                {
+                    fin = 0;
+                    contadorProcesando = 0;
+                    ejecutando = (PROCESO)listo[0];
+                    listo.RemoveAt(0);
+                    fin = ejecutando.tomarRafaga();
+                    formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
+                    Console.WriteLine("S.O " + ejecutando.Nombre + " De listo a ejecutando");
+                    return true;
+                }
+                if (ContadorProcesando < fin) //Entra mientras haya procesado menos veces que la rafaga
+                {
+                    Console.WriteLine("Ejecutando " + ejecutando.Nombre + " " + ContadorProcesando);
+                    formGrafica.MarcarCelda(tiempo, numEjecutando, ejecutando.Nombre);
+                    ContadorProcesando++; //contador de tiempos ejecutados
+                }
+                else if (ejecutando.ContadorRafaga < 1) //si no quedan mas rafagas termina el proceso
+                {
+                    Console.WriteLine("S.O " + ejecutando.Nombre + " terminado");
+                    formGrafica.MarcarCelda(tiempo, numTerminado, ejecutando.Nombre);
+                    ejecutando = null;
+                    terminados++;
+                }
+                else //si quedan envia el proceso a bloqueado
+                {
+                    Console.WriteLine("S.O " + ejecutando.Nombre + " de ejecutando a bloqueado");
+                    formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
+                    ejecutando.ContadorBloqueado = tiempo;
+                    bloqueado.Add(ejecutando);
+                    ejecutando = null;
+                }
+                return true;
+            }
+
+            return false;
+        }
     }
 }
