@@ -12,15 +12,15 @@ namespace EmuladorProcesador
     {
         protected PROCESO ejecutando;
         protected PROCESO aux;
-        private int tiempo = -1, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
-        private int politicaDeTrabajo;
-        private ArrayList nuevo = new ArrayList();
-        private ArrayList listo = new ArrayList();
-        private ArrayList bloqueado = new ArrayList();
-        private ArrayList procesos = new ArrayList();
-        private Boolean flagBloqueadoSalida = false, flagNuevoSalida = false;
-        private FormGrafica formGrafica;
-        private int numSO = 0, numNuevo = 1, numListo = 2, numBloqueado = 3, numEjecutando = 4, numTerminado = 5;
+        protected int tiempo = -1, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
+        protected int politicaDeTrabajo;
+        protected ArrayList nuevo = new ArrayList();
+        protected ArrayList listo = new ArrayList();
+        protected ArrayList bloqueado = new ArrayList();
+        protected ArrayList procesos = new ArrayList();
+        protected Boolean flagBloqueadoSalida = false, flagNuevoSalida = false;
+        protected FormGrafica formGrafica;
+        protected int numSO = 0, numNuevo = 1, numListo = 2, numBloqueado = 3, numEjecutando = 4, numTerminado = 5;
         public SISTEMA(FormGrafica formGrafica)//agregacion de la form que lleva la grafica
         {
             this.formGrafica = formGrafica;
@@ -86,16 +86,11 @@ namespace EmuladorProcesador
             {
                 if ((p.ContadorBloqueado + TiempoIO) < tiempo && ejecutando == null)
                 {
-                    Console.WriteLine("S.O de Bloqueado a Listo " + p.Nombre);
                     formGrafica.MarcarCelda(Tiempo, numSO, p.Nombre);
                     listo.Add(p);
                     bloqueado.Remove(p);
                     flagBloqueadoSalida = true;//marca la salida para el if
                     break;
-                }
-                else
-                {
-                    Console.WriteLine("Proceso " + p.Nombre + " bloqueado, tiempo " + (tiempo - (p.ContadorBloqueado)));
                 }
             }
             if (flagBloqueadoSalida)
@@ -118,7 +113,6 @@ namespace EmuladorProcesador
                         nuevo.Add(p);
                         procesos.Remove(p);
                         formGrafica.MarcarCelda(tiempo, numSO, p.Nombre);
-                        Console.WriteLine("S.O " + p.Nombre + " ingresa a Nuevo");
                         flagNuevoSalida = true;
                         break;
                     }
@@ -137,7 +131,6 @@ namespace EmuladorProcesador
             {
                 aux = (PROCESO)nuevo[0];
                 formGrafica.MarcarCelda(tiempo, numSO, aux.Nombre);
-                Console.WriteLine("S.O. " + aux.Nombre + " de Nuevo a Listo ");
                 listo.Add(nuevo[0]);
                 nuevo.RemoveAt(0);
                 return true;
@@ -146,7 +139,7 @@ namespace EmuladorProcesador
         }
 
 
-        public Boolean Ejecutando()
+        public virtual Boolean Ejecutando()
         {
             if (listo.Count > 0 || ejecutando != null) // ejecuta
             {
@@ -159,25 +152,21 @@ namespace EmuladorProcesador
                     listo.RemoveAt(0);
                     fin = ejecutando.tomarRafaga();
                     formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
-                    Console.WriteLine("S.O " + ejecutando.Nombre + " De listo a ejecutando");
                     return true;
                 }
                 if (ContadorProcesando < fin) //Entra mientras haya procesado menos veces que la rafaga
                 {
-                    Console.WriteLine("Ejecutando " + ejecutando.Nombre + " " + ContadorProcesando);
                     formGrafica.MarcarCelda(tiempo, numEjecutando, ejecutando.Nombre);
                     ContadorProcesando++; //contador de tiempos ejecutados
                 }
                 else if (ejecutando.ContadorRafaga < 1) //si no quedan mas rafagas termina el proceso
                 {
-                    Console.WriteLine("S.O " + ejecutando.Nombre + " terminado");
                     formGrafica.MarcarCelda(tiempo, numTerminado, ejecutando.Nombre);
                     ejecutando = null;
                     terminados++;
                 }
                 else //si quedan envia el proceso a bloqueado
                 {
-                    Console.WriteLine("S.O " + ejecutando.Nombre + " de ejecutando a bloqueado");
                     formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
                     ejecutando.ContadorBloqueado = tiempo;
                     bloqueado.Add(ejecutando);

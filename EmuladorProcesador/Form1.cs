@@ -36,19 +36,26 @@ namespace EmuladorProcesador
 
         private void button1_Click(object sender, EventArgs e)//click inicio de la simulacion
         {
-
+            
             FormGrafica fGrafica = new FormGrafica();
-            Boolean flagFunciona = false;
             SISTEMA sistema = new SISTEMA(fGrafica);
-            switch(comboBoxPrioridad.Text)
+            Boolean flagFunciona = false;
+
+            switch(comboBoxPrioridad.SelectedIndex)
             {
-                case "FIFO":
-                    sistema.PoliticaDeTrabajo = 0;
+                case 0:
+                    sistema = new SISTEMA(fGrafica);
                     break;
-                case "Mas corto primero c/desalojo":
-                    sistema.PoliticaDeTrabajo = 1;
+                case 1:
+                    sistema = new MasCortoPrimero(fGrafica);
+                    break;
+                case 2:
+                    break;
+                case 3:
                     break;
             }
+            
+
             try
             {
                 sistema.TiempoIO = Convert.ToInt32(textBox_IO.Text);

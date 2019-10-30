@@ -40,12 +40,11 @@ namespace EmuladorProcesador
             return aux;
         }
 
-        public void MostrarRafagas()
+        public int MostrarRafaga()
         {
-            foreach(int i in array)
-            {
-                Console.WriteLine(i);
-            }
+            int aux;
+            aux = Convert.ToInt32(array[0]);
+            return aux;
         }
 
         public ArrayList Array { get => array; set => array = value; }
