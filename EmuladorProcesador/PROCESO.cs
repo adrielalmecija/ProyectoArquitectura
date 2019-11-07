@@ -46,6 +46,7 @@ namespace EmuladorProcesador
         public void DevolverRafaga(int rafaga)
         {
             array.Insert(0, rafaga);
+            contadorRafaga++;
         }
 
         public int MostrarRafaga()
