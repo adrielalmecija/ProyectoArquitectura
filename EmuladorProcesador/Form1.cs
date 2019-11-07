@@ -32,17 +32,13 @@ namespace EmuladorProcesador
 
         }
         
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button1_Click(object sender, EventArgs e)//click inicio de la simulacion
         {
             
             FormGrafica fGrafica = new FormGrafica();
             SISTEMA sistema = new SISTEMA(fGrafica);
-            Boolean flagFunciona = false;
+            Boolean flagFunciona = true;
 
             switch(comboBoxPrioridad.SelectedIndex)
             {
@@ -57,7 +53,15 @@ namespace EmuladorProcesador
                     break;
                 case 3:
                     sistema = new RoundRobin(fGrafica);
-                    sistema.TiempodeRoundRobin = Convert.ToInt32(textBoxTiempodeRafaga.Text);
+                    try
+                    {
+                        sistema.TiempodeRoundRobin = Convert.ToInt32(textBoxTiempodeRafaga.Text);
+                    }
+                    catch (FormatException)
+                    {
+                        flagFunciona = false;
+                    }
+                    
                     break;
             }
             
@@ -69,6 +73,7 @@ namespace EmuladorProcesador
             }
             catch (Exception)
             {
+                flagFunciona = false;
                 MessageBox.Show("El tiempo de I/O no es valido");
             }
 
@@ -87,9 +92,13 @@ namespace EmuladorProcesador
                         p1.agregarRafaga(P1textBox3.Text);
                         p1.agregarRafaga(P1textBox4.Text);
                         sistema.AgregarProceso(p1);
-                        flagFunciona = true;
+                        
                     }
-                    catch (Exception)
+                    catch (ExcepcionNoAnda)
+                    {
+
+                    }
+                    catch (FormatException)
                     {
                         MessageBox.Show("El inicio 1 no es valido");
                     }
@@ -115,9 +124,13 @@ namespace EmuladorProcesador
                         p2.agregarRafaga(P2textBox3.Text);
                         p2.agregarRafaga(P2textBox4.Text);
                         sistema.AgregarProceso(p2);
-                        flagFunciona = true;
+                        
                     }
-                    catch (Exception)
+                    catch (ExcepcionNoAnda)
+                    {
+
+                    }
+                    catch (FormatException)
                     {
                         MessageBox.Show("El inicio 2 no es valido");
                     }
@@ -142,11 +155,15 @@ namespace EmuladorProcesador
                         p3.agregarRafaga(P3textBox3.Text);
                         p3.agregarRafaga(P3textBox4.Text);
                         sistema.AgregarProceso(p3);
-                        flagFunciona = true;
+                        
                     }
-                    catch (Exception)
+                    catch (FormatException)
                     {
                         MessageBox.Show("El inicio 3 no es valido");
+                    }
+                    catch (ExcepcionNoAnda)
+                    {
+
                     }
                 }
                 else
@@ -169,9 +186,13 @@ namespace EmuladorProcesador
                         p4.agregarRafaga(P4textBox3.Text);
                         p4.agregarRafaga(P4textBox4.Text);
                         sistema.AgregarProceso(p4);
-                        flagFunciona = true;
+                        
                     }
-                    catch (Exception)
+                    catch (ExcepcionNoAnda)
+                    {
+                        
+                    }
+                    catch (FormatException)
                     {
                         MessageBox.Show("El inicio 4 no es valido");
                     }
@@ -183,7 +204,7 @@ namespace EmuladorProcesador
             }
 
 
-            if (flagFunciona)
+            if (sistema.CantidaddeProcesos() > 0 && flagFunciona)
             {
                                     
                 sistema.Ejecucion(); //comienzo de la simulacion

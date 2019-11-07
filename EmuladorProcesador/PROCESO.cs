@@ -15,7 +15,7 @@ namespace EmuladorProcesador
         private int contadorRafaga=0;
         private int contadorBloqueado=0;
         private string nombre= "";
-        public void agregarRafaga(string dato)
+        public void agregarRafaga(string dato) 
         {
             if (dato != "")
             {
@@ -27,6 +27,7 @@ namespace EmuladorProcesador
                 catch (Exception)
                 {
                     MessageBox.Show("Las rafagas deben ser numericas");
+                    throw new ExcepcionNoAnda();
                 }               
             }
 

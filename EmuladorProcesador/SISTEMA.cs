@@ -73,6 +73,10 @@ namespace EmuladorProcesador
         {
             procesos.Add(p);
         }
+        public int CantidaddeProcesos()
+        {
+            return procesos.Count;
+        }
 
         public void MostrarProcesos(ArrayList array, int tiempo, int numCelda)//muestra los procesos en cola en la grafica
         {

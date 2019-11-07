@@ -120,7 +120,6 @@
             this.textBox_IO.TabIndex = 3;
             this.textBox_IO.Text = "10";
             this.textBox_IO.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_IO.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // labelP1
             // 
