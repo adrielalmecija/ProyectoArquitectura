@@ -13,7 +13,7 @@ namespace EmuladorProcesador
         protected PROCESO ejecutando;
         protected PROCESO aux;
         protected int tiempo = -1, contadorProcesando = 0, tiempoIO = 0, fin = 0, terminados = 0,cantidadProcesos;
-        protected int politicaDeTrabajo;
+        protected int tiempodeRoundRobin;
         protected ArrayList nuevo = new ArrayList();
         protected ArrayList listo = new ArrayList();
         protected ArrayList bloqueado = new ArrayList();
@@ -30,8 +30,8 @@ namespace EmuladorProcesador
         public int Tiempo { get => tiempo; set => tiempo = value; }
         public int ContadorProcesando { get => contadorProcesando; set => contadorProcesando = value; }
         public int TiempoIO { get => tiempoIO; set => tiempoIO = value; }
-        public int PoliticaDeTrabajo { get => politicaDeTrabajo; set => politicaDeTrabajo = value; }
-        
+        public int TiempodeRoundRobin { get => tiempodeRoundRobin; set => tiempodeRoundRobin = value; }
+
         public void Ejecucion()//logica de la simulacion
         {
             
@@ -67,6 +67,8 @@ namespace EmuladorProcesador
                         
         }
 
+
+
         public void AgregarProceso(PROCESO p)
         {
             procesos.Add(p);
@@ -80,11 +82,14 @@ namespace EmuladorProcesador
             }
         }
         
+        //funciones principales
+
+
         public Boolean Bloqueados()
         {
             foreach (PROCESO p in bloqueado)//comprobacion de procesos bloqueados
             {
-                if ((p.ContadorBloqueado + TiempoIO) < tiempo && ejecutando == null)
+                if ((p.ContadorBloqueado + TiempoIO) < tiempo && ejecutando == null)//paso de bloqueado a listo
                 {
                     formGrafica.MarcarCelda(Tiempo, numSO, p.Nombre);
                     listo.Add(p);
@@ -101,7 +106,7 @@ namespace EmuladorProcesador
             return false;
         }
 
-        public Boolean Nuevos()
+        public virtual Boolean Nuevos()
         {
             if (ejecutando == null) //comprueba si hay proceso para entrar a nuevo
             {

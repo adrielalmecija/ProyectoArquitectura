@@ -22,10 +22,13 @@ namespace EmuladorProcesador
             P3groupBox.Enabled = false;
             P4groupBox.Enabled = false;
             comboBoxPrioridad.Items.Add("FIFO");
+            comboBoxPrioridad.Items.Add("Mas corto primero");
             comboBoxPrioridad.Items.Add("Mas corto primero c/desalojo");
+            comboBoxPrioridad.Items.Add("Round Robin");
             comboBoxPrioridad.SelectedIndex = 0;
             comboBoxPrioridad.DropDownStyle = ComboBoxStyle.DropDownList;
-            
+            textBoxTiempodeRafaga.Enabled = false;
+            labelTiempodeRafaga.Enabled = false;
 
         }
         
@@ -44,14 +47,17 @@ namespace EmuladorProcesador
             switch(comboBoxPrioridad.SelectedIndex)
             {
                 case 0:
-                    sistema = new SISTEMA(fGrafica);
+                    sistema = new FIFO(fGrafica);
                     break;
                 case 1:
                     sistema = new MasCortoPrimero(fGrafica);
                     break;
                 case 2:
+                    sistema = new MasCortoPrimeroCD(fGrafica);
                     break;
                 case 3:
+                    sistema = new RoundRobin(fGrafica);
+                    sistema.TiempodeRoundRobin = Convert.ToInt32(textBoxTiempodeRafaga.Text);
                     break;
             }
             
@@ -179,8 +185,7 @@ namespace EmuladorProcesador
 
             if (flagFunciona)
             {
-                 
-                    
+                                    
                 sistema.Ejecucion(); //comienzo de la simulacion
                 fGrafica.ShowDialog();
 
@@ -245,6 +250,25 @@ namespace EmuladorProcesador
             {
                 P4groupBox.Enabled = false;
             }
+        }
+
+        private void comboBoxPrioridad_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(comboBoxPrioridad.SelectedIndex==3)
+            {
+                textBoxTiempodeRafaga.Enabled = true;
+                labelTiempodeRafaga.Enabled = true;
+            }
+            else
+            {
+                textBoxTiempodeRafaga.Enabled = false;
+                labelTiempodeRafaga.Enabled = false;
+            }
+        }
+
+        private void labelTiempodeRafaga_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

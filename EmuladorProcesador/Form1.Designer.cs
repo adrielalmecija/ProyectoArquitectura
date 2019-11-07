@@ -71,6 +71,8 @@
             this.P2textBoxInicio = new System.Windows.Forms.TextBox();
             this.P2groupBox = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxTiempodeRafaga = new System.Windows.Forms.TextBox();
+            this.labelTiempodeRafaga = new System.Windows.Forms.Label();
             this.P1groupBox.SuspendLayout();
             this.P3groupBox.SuspendLayout();
             this.P4groupBox.SuspendLayout();
@@ -86,6 +88,7 @@
             this.comboBoxPrioridad.Name = "comboBoxPrioridad";
             this.comboBoxPrioridad.Size = new System.Drawing.Size(186, 24);
             this.comboBoxPrioridad.TabIndex = 0;
+            this.comboBoxPrioridad.SelectedIndexChanged += new System.EventHandler(this.comboBoxPrioridad_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -100,7 +103,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(173, 251);
+            this.label2.Location = new System.Drawing.Point(247, 251);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 17);
@@ -109,7 +112,7 @@
             // 
             // textBox_IO
             // 
-            this.textBox_IO.Location = new System.Drawing.Point(173, 278);
+            this.textBox_IO.Location = new System.Drawing.Point(247, 278);
             this.textBox_IO.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_IO.Name = "textBox_IO";
             this.textBox_IO.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -478,11 +481,31 @@
             this.pictureBox1.TabIndex = 41;
             this.pictureBox1.TabStop = false;
             // 
+            // textBoxTiempodeRafaga
+            // 
+            this.textBoxTiempodeRafaga.Location = new System.Drawing.Point(101, 278);
+            this.textBoxTiempodeRafaga.Name = "textBoxTiempodeRafaga";
+            this.textBoxTiempodeRafaga.Size = new System.Drawing.Size(96, 22);
+            this.textBoxTiempodeRafaga.TabIndex = 42;
+            // 
+            // labelTiempodeRafaga
+            // 
+            this.labelTiempodeRafaga.AutoSize = true;
+            this.labelTiempodeRafaga.Location = new System.Drawing.Point(88, 251);
+            this.labelTiempodeRafaga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTiempodeRafaga.Name = "labelTiempodeRafaga";
+            this.labelTiempodeRafaga.Size = new System.Drawing.Size(125, 17);
+            this.labelTiempodeRafaga.TabIndex = 43;
+            this.labelTiempodeRafaga.Text = "Tiempo de Rafaga";
+            this.labelTiempodeRafaga.Click += new System.EventHandler(this.labelTiempodeRafaga_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 830);
+            this.Controls.Add(this.labelTiempodeRafaga);
+            this.Controls.Add(this.textBoxTiempodeRafaga);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.P4groupBox);
             this.Controls.Add(this.P3groupBox);
@@ -565,6 +588,8 @@
         private System.Windows.Forms.TextBox P2textBoxInicio;
         private System.Windows.Forms.GroupBox P2groupBox;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBoxTiempodeRafaga;
+        private System.Windows.Forms.Label labelTiempodeRafaga;
     }
 }
 
