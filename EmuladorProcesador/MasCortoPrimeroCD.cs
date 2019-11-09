@@ -22,7 +22,7 @@ namespace EmuladorProcesador
                         {
                             ejecutando.DevolverRafaga((fin-ContadorProcesando));
                             listo.Insert(0, ejecutando);
-                            formGrafica.MarcarCelda(tiempo, numSO, p.Nombre);
+                            formGrafica.MarcarCelda(tiempo, numSO, ejecutando.Nombre);
                             ejecutando = null;
                             return true;
                         }else
